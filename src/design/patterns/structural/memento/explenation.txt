@@ -1,0 +1,35 @@
+It is sometimes necessary to capture the internal state of an object at some point and have the ability to restore the object to that state later in time.
+Consider the case of a calculator object with an undo operation such a calculator could simply maintain a list of all previous operation that it has performed
+and thus would be able to restore a previous calculation it has performed. This would cause the calculator object to become larger, more complex, and heavyweight,
+as the calculator object would have to provide additional undo functionality and should maintain a list of all previous operations. This functionality can be moved
+out of the calculator class, so that an external (let's call it undo manager class) can collect the internal state of the calculator and save it. However providing
+the explicit access to every state variable of the calculator to the restore manager would be impractical and would violate the encapsulation principle.
+
+Intent
+
+The intent of this pattern is to capture the internal state of an object without violating encapsulation and thus providing a mean for restoring the object into initial state when needed.
+
+Memento
+    Stores internal state of the Originator object. The state can include any number of state variables.
+    The Memento must have two interfaces, an interface to the caretaker. This interface must not allow any operations or any access to internal state stored by the memento and thus honors encapsulation. The other interface is to the originator and allows the originator to access any state variables necessary to for the originator to restore previous state.
+Originator
+    Creates a memento object capturing the originators internal state.
+    Use the memento object to restore its previous state.
+Caretaker
+    Responsible for keeping the memento.
+    The memento is opaque to the caretaker, and the caretaker must not operate on it.
+
+A Caretaker would like to perform an operation on the Originator while having the possibility to rollback. The caretaker calls the createMemento() method on the originator asking the originator
+to pass it a memento object. At this point the originator creates a memento object saving its internal state and passes the memento to the caretaker. The caretaker maintains the memento object
+and performs the operation. In case of the need to undo the operation, the caretaker calls the setMemento() method on the originator passing the maintained memento object. The originator would
+accept the memento, using it to restore its previous state.
+
+The memento pattern is used when a snapshot of an object's state must be captured so that it can be restored to that state later and in situations where explicitly passing the state of the object
+would violate encapsulation.
+
+Known Uses
+    Undo and restore operations in most software.
+    Database transactions discussed earlier.
+
+
+http://www.oodesign.com/memento-pattern.html

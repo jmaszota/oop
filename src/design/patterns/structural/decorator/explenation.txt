@@ -1,0 +1,13 @@
+Decorator pattern:
+
+- Attach additional responsibilities to an object dynamically.
+Decorators provide a flexible alternative to subclassing for extending
+functionality.
+- Client-specified embellishment of a core object by recursively
+wrapping it.
+- You want to add behavior or state to individual objects at run-time.
+Inheritance is not feasible because it is static and applies to an entire
+class.
+- Decorator pattern allows a user to add new functionality to an existing object without altering its structure.
+- This type of design pattern comes under structural pattern as this pattern acts as a wrapper to existing class.
+- This pattern creates a decorator class which wraps the original class and provides additional functionality keeping class methods signature intact.

@@ -1,0 +1,25 @@
+
+The Interpreter is one of the Design Patterns published in the GoF which is not really used.
+Usualy the Interpreter Pattern is described in terms of formal grammars, like it was described in the original form in the GoF but the area where this design pattern can be applied can be extended.
+The Interpreter pattern discusses: defining a domain language (i.e. problem characterization) as a simple language grammar, representing domain rules as language sentences, and interpreting these sentences to solve the problem. The pattern uses a class to represent each grammar rule. And since grammars are usually hierarchical in structure, an inheritance hierarchy of rule classes maps nicely.
+
+An abstract base class specifies the method interpret(). Each concrete subclass implements interpret() by accepting (as an argument) the current state of the language stream,
+and adding its contribution to the problem solving process.
+
+Interpreter suggests modeling the domain with a recursive grammar. Each rule in the grammar is either a 'composite' (a rule that references other rules) or a terminal (a leaf node in a tree structure).
+Interpreter relies on the recursive traversal of the Composite pattern to interpret the 'sentences' it is asked to process.
+
+Intent
+- Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
+- Map a domain to a language, the language to a grammar, and the grammar to a hierarchical object-oriented design
+
+Should be used:
+ - The Interpreter pattern is used exaustively in defining grammars, tokenize input and store it.
+ - A specific area where Interpreter can be used are the rules engines.
+ - The Interpreter pattern can be used to add functionality to the composite pattern.
+
+The Interpreter pattern has a limited area where it can be applied. We can dsicuss the Interpreter pattern only in terms of formal grammars but in this area there are better solutions
+and this is the reason why this pattern is not so frequenlty used. This pattern can be applied for parssing light expressions defined in simple grammars and sometimes in simple rule engines.
+
+https://sourcemaking.com/design_patterns/interpreter
+http://www.oodesign.com/interpreter-pattern.html
